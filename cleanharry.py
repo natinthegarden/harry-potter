@@ -1,11 +1,4 @@
-import argparse
-import json
-import logging
-from pathlib import Path
-import pandas as pd
-import numpy as np
 
-# Clean data in Harry Potter Fanfic Dataset
 #
 # Usage: 
 # $ python3 clean.py data/test.csv results/test-clean.csv
@@ -16,126 +9,59 @@ import numpy as np
 #
 # test input file provided: data/test.csv
 
-def get_file_names() -> tuple:
-    """Get the input and output file names from the arguments passed in
-    @return a tuple containing (input_file_name, output_file_name)
-    """
-    parser = argparse.ArgumentParser()
-    parser.add_argument("input_file", help="Name of the original data file.")
-    parser.add_argument("output_file", help="Name of the file for cleaned data.")
-    args = parser.parse_args()
-    return args.input_file, args.output_file
-
-
-def validate_columns(df: pd.DataFrame) -> None:
-    """Validates that the data in the input file has the expected columns. \
-    Exits with an error if the expected columns are not present.
-    @param df - The DataFrame object with the data from the input file.
-    """
-    EXPECTED_COLUMNS = ['Chapters', 'Favs', 'Follows', 'Published', 'Reviews', 'Updated',
-       'Words', 'author', 'characters', 'genre', 'language', 'rating',
-       'story_link', 'synopsis', 'title', 'published_mmyy', 'pairing']
-    if not all(item in list(df.columns) for item in EXPECTED_COLUMNS):
-       logging.error('Input file does not have the expected columns.')
-       exit(1)
-    return None
-
-'''This is COMMENTING IT OUT -DELETE THIS LINE AND LAST LINE
-def build_genre_column(df: pd.DataFrame) -> pd.DataFrame:
-    """Creates a new column in the DataFrame called Genre that is based on the\
-    ItemCollection column.
-    @param df - the original DataFrame
-    @return a DataFrame with a new column added
-    """
-    json_path = Path('data/genre.json')
-    with open(json_path, 'r') as json_file:
-        genre_data = json.load(json_file)
-        genre_conditions = [
-            (df['ItemCollection'].isin(genre_data['Fiction'])),
-            (df['ItemCollection'].isin(genre_data['Non-Fiction'])),
-            (df['ItemCollection'].isin(genre_data['Unknown']))
-        ]
-        genre_values = ['Fiction', 'Non-Fiction', 'Unknown']
-        df['Genre'] = np.select(genre_conditions, genre_values)
-        return df
-
-
-# TODO: define a function to create the audience column here
-
-def build_audience_column(df: pd.DataFrame) -> pd.DataFrame:
-    """Creates a new column in the DataFrame called Audience that is based on the\
-    ItemCollection column.
-    @param df - the original DataFrame
-    @return a DataFrame with a new column added
-    """
-    json_path = Path('data/audience.json')
-    with open(json_path, 'r') as json_file:
-        audience_data = json.load(json_file)
-        audience_conditions = [
-            (df['ItemCollection'].isin(audience_data['Adult'])),
-            (df['ItemCollection'].isin(audience_data['Teen'])),
-            (df['ItemCollection'].isin(audience_data['Children'])),
-            (df['ItemCollection'].isin(audience_data['Unknown'])),
-        ]
-        audience_values = ['Adult', 'Teen', 'Children', 'Unknown']
-        df['Audience'] = np.select(audience_conditions, audience_values)
-        return df
 
 
 
-def main() -> None:
-    """Main cleaning logic
-    """
-    logging.info('Getting file names from arguments.')
-    input_file, output_file = get_file_names()
-    logging.info(f'Input file is: {input_file}')
-    logging.info(f'Output file is: {output_file}')
- 
-    logging.info('Loading data from input file.')
-    input_path = Path(input_file)
-    if not input_path.exists():
-        logging.error(f'Input file not found: {input_file}')
-        exit(1)
-    books_df = pd.read_csv(input_path)
 
-    logging.info('Validating columns in input file.')
-    validate_columns(books_df)
+import argparse
+import json
+import logging
+from pathlib import Path
+import pandas as pd
+import numpy as np
 
-    # 1. TODO: Remove unneeded columns (ISBN, ReportDate)
-    logging.info('Step 1: Removing unneeded columns.')
-    books_df.drop(['ISBN','ReportDate'], axis=1, inplace=True)
+harry_df = pd.read_csv('/Users/natalyanaser/desktop/hpcleanvlarge1.csv')
+# Clean data in Harry Potter Fanfic Dataset
+    # Remove unneeded column ('Updated' 'story_link')
+logging.info('Removing unneeded columns.')
+harry_df.drop(['Updated', 'story_link'], axis=1, inplace=True)
 
-    # 2. TODO: Remove records with empty and invalid PuublicationYear or ItemCollection.
-    logging.info('Step 2: Removing records with empty and invalid PuublicationYear or ItemCollection.')
-    books_df.dropna(subset=['ItemCollection'], inplace=True)
-    books_df = books_df[books_df['PublicationYear'] != 0]
-    books_df = books_df[books_df['PublicationYear'] != 9999]
+    # Remove column values that are empty in 'pairing' and 'Follows'.
+logging.info('Removing records with empty pairing or Follows.')
+harry_df.dropna(subset=['pairing'], inplace=True)
+harry_df.dropna(subset=['Follows'], inplace=True)
 
+# Split the "published_mmyy" column into separate "Month" and "Year" columns
+harry_df[['Month Published', 'Year Published']] = harry_df['published_mmyy'].str.split('-', expand=True)
 
-    # 3. TODO: Update incorrect values (PublicationYear 2109 -> 2019)
-    logging.info('Step 3: Updating incorrect values (publicationyear 2109 to 2019)')
-    books_df.replace(to_replace=2109, value=2019, inplace=True)
+# Drop the original "published_mmyy" column
+harry_df = harry_df.drop('published_mmyy', axis=1)
+
+# Save the modified dataframe to a clean CSV file
+harry_df.to_csv('cleaned_data.csv', index=False)
 
 
-    # 4. TODO: Add genre and audience columns
-    logging.info('Step 4: Adding genre and audience columns')
-    books_df = build_genre_column(books_df)
-    books_df = build_audience_column(books_df)
-  
+import csv
+from itertools import islice
 
- 
-    logging.info('Saving output file.')
-    output_path = Path(output_file)
-    if output_path.suffix == '.csv.gz':
-        books_df.to_csv(output_path, index=False, compression="gzip")
-    else:
-        books_df.to_csv(output_path, index=False)
+# Open the original CSV file
+with open('/Users/natalyanaser/desktop/hpcleanvlarge1.csv') as csvfile:
+
+    # Create a CSV reader object
+    reader = csv.reader(harry_df)
+
+    # Extract the first 100 rows using islice
+    test_rows = list(islice(reader, 100))
     
-    return None
+# Write the test rows to a new CSV file
+with open('test_dataset.csv', 'w', newline='') as csvfile:
 
+   # Create a CSV writer object
+    writer = csv.writer(csvfile)
 
-if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO, format='%(levelname)s - %(message)s')
-    main()
-
-'''
+    # Write the test rows to the new CSV file
+    for row in test_rows:
+        writer.writerow(row)
+   
+   
+   
