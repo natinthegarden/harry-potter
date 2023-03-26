@@ -1,6 +1,6 @@
-# harry-potter
-Practice Data Analyasis Project
+# Harry Potter Fanfiction Data Analysis
+*Practice Data Analyasis Project*
 
-I use a Harry Potter Fanfic dataset from Kaggle to practice data analysis. I explore the data in a python notebook, clean the data (deleting certain columns, splitting certain columns, removing specific column categories).
+I use a **Harry Potter Fanfiction dataset** from Kaggle to practice data analysis. I **explore** the data in a python notebook with Pandas, **clean** the data (deleting certain columns, splitting certain columns, removing specific column categories).
 
-I then analyze this data and create some visuals.
+I then **analyze** this data and **create visuals** to go wiht my analysis!
