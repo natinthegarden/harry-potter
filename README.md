@@ -29,7 +29,7 @@ This was a fun student project to get familiar with data cleaning and analysis t
 
 - **Cleaned data** using built-in pandas and numpy functions to remove 0’s and null values, split an existing date column into two columns (for month and year), removed unwanted columns(Last Updated, story links, language, and original mm-yr columns), removed unwanted categories from columns (languages other than english), changed Month Published column from listing months as numbers to listing months as names, and saved all changes to a new clean data csv.
 
-- **Some Pandas functions** used in both jupyter notebooks
+- **Pandas functions** used in both **explore_harry** and **analyze_harry** jupyter notebooks
    
      .head(), .columns, .shape, .info(), .isnull().sum().sort_values(ascending=False), .unique(), .value_counts(), .describe(), .groupby, print, int(), .iloc
 
