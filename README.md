@@ -19,20 +19,22 @@ This was a fun student project to get familiar with data cleaning and analysis t
 
 - My **cleanharry.py** file contains my *cleaning scripts* where I delete certain columns, split certain columns, remove null values, and remove specific column categories. 
 
+- The **analyze_harry.ipynb** can be opened and read to see where I further analyzed my clean data and made plots using matplotlib.
+
 ---
 
 <h3>Project Requirements Included</h3>
 
-- Pandas read_csv function 
+- Pandas **read_csv** function to read in the CSV file
 
-- Cleaned data using built-in pandas and numpy functions to remove 0’s and null values, split an existing date column into two columns (for month and year), removed unwanted columns(date updated, story linnks, language, and original mm-yr column), removed unwanted categories from columns (languages other than english), and saved all changes to a new clean data csv.
+- Cleaned data using built-in pandas and numpy functions to remove 0’s and null values, split an existing date column into two columns (for month and year), removed unwanted columns(Last Updated, story links, language, and original mm-yr columns), removed unwanted categories from columns (languages other than english), and saved all changes to a new clean data csv.
 
 - Pandas functions used in both jupyter notebooks
    
-        .head(), .columns, .shape, .info(), .isnull().sum().sort_values(ascending=False), .unique(), .value_counts(), .describe(), .groupby, print, 
+     .head(), .columns, .shape, .info(), .isnull().sum().sort_values(ascending=False), .unique(), .value_counts(), .describe(), .groupby, print, 
 
 - Made 2 basic plots with matplotlib
 
-        .plot(kind='bar'), plt.scatter
+   .plot(kind='bar'), plt.scatter
 
 - Wrote markdown in Jupyter Notebooks explaining process in between all lines of code
