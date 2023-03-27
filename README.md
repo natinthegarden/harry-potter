@@ -5,7 +5,7 @@
 
 I use a **Harry Potter Fanfiction dataset** from Kaggle to practice data analysis. This dataset includes info about all fan written harry potter stories uploaded to the site fanfic.net from 2001-2019.  
 
-I **explore** this data in a python notebook with Pandas, and then **clean** the data. I then **analyze** this data and **create visuals** to go with my analysis!
+I **explore** this data in a jupyter notebook with Pandas, and then **clean** the data. I then **analyze** this data and **create visuals** to go with my analysis!
 
 ---
 
@@ -27,7 +27,7 @@ This was a fun student project to get familiar with data cleaning and analysis t
 
 - Cleaned data using built-in pandas and numpy functions to remove 0’s and null values, split an existing date column into two columns (for month and year), removed unwanted columns(date updated, story linnks, language, and original mm-yr column), removed unwanted categories from columns (languages other than english), and saved all changes to a new clean data csv.
 
-- Pandas functions used
+- Pandas functions used in both jupyter notebooks
    
         .head(), .columns, .shape, .info(), .isnull().sum().sort_values(ascending=False), .unique(), .value_counts(), .describe(), .groupby, print, 
 
