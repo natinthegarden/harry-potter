@@ -19,7 +19,7 @@ logging.info('Removing unneeded columns.')
 harry_df.drop(['Updated', 'story_link'], axis=1, inplace=True)
 
     # Remove column values that are empty in 'pairing' and 'Follows' columns.
-logging.info('Removing records with empty pairing or Follows.')
+logging.info('Removing records with empties.')
 harry_df.dropna(subset=['pairing'], inplace=True)
 harry_df.dropna(subset=['Follows'], inplace=True)
 harry_df.dropna(subset=['Reviews'], inplace=True)
