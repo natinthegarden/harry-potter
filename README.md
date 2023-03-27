@@ -5,6 +5,8 @@
 
 I use a **Harry Potter Fanfiction dataset** from Kaggle to practice data analysis. This dataset includes info about all fan written harry potter stories uploaded to the site fanfic.net from 2001-2019.  
 
+*dataset link:* https://www.kaggle.com/datasets/nehatiwari03/harry-potter-fanfiction-data?resource=download
+
 I **explore** this data in a jupyter notebook with Pandas, and then **clean** the data. I then **analyze** this data and **create visuals** to go with my analysis!
 
 ---
@@ -13,7 +15,7 @@ I **explore** this data in a jupyter notebook with Pandas, and then **clean** th
 
 This was a fun student project to get familiar with data cleaning and analysis tools with Python.
 
-- Install the **requirements.txt** to get specific *package install requirements* to pip install pandas, numpy and specific Python version. 
+- Install the **requirements.txt** to get specific *package install requirements* to pip install pandas, numpy and specific Python version. You'll also need to download the dataset to your computer to start.
 
 - The **explore_harry.ipynb** can be opened and read to see where I *explored my raw data*. I made choices in this exploration about what cleaning functions would be needed.
 
@@ -31,9 +33,9 @@ This was a fun student project to get familiar with data cleaning and analysis t
 
 - **Pandas functions** used in both **explore_harry** and **analyze_harry** jupyter notebooks
    
-     .head(), .columns, .shape, .info(), .isnull().sum().sort_values(ascending=False), .unique(), .value_counts(), .describe(), .groupby, print, int(), .iloc
+     .head(), .columns, .shape, .info(), .isnull().sum().sort_values(ascending=False), .unique(), .value_counts(), .describe(), .groupby, print, int(), .iloc, .median
 
-- Made **basic plots with matplotlib**
+- Made **basic plots with matplotlib**. A scatter plot, bar graph, and pie chart.
 
    .plot(kind='bar'), plt.scatter, ax.pie
 
