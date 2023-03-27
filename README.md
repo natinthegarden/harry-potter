@@ -9,6 +9,8 @@ I **explore** this data in a python notebook with Pandas, and then **clean** the
 
 ---
 
+<h3>Summary</h3>
+
 This was a fun student project to get familiar with data cleaning and analysis tools with Python.
 
 - Install the **requirements.txt** to get specific *package install requirements* to pip install pandas, numpy and specific Python version. 
@@ -16,3 +18,21 @@ This was a fun student project to get familiar with data cleaning and analysis t
 - The **explore_harry.ipynb** can be opened and read to see where I *explored my raw data*. I made choices in this exploration about what cleaning functions would be needed.
 
 - My **cleanharry.py** file contains my *cleaning scripts* where I delete certain columns, split certain columns, remove null values, and remove specific column categories. 
+
+---
+
+<h3>Project Requirements Included</h3>
+
+- Pandas read_csv function 
+
+- Cleaned data using built-in pandas and numpy functions to remove 0’s and null values, split an existing date column into two columns (for month and year), removed unwanted columns(date updated, story linnks, language, and original mm-yr column), removed unwanted categories from columns (languages other than english), and saved all changes to a new clean data csv.
+
+- Pandas functions used
+   
+        .head(), .columns, .shape, .info(), .isnull().sum().sort_values(ascending=False), .unique(), .value_counts(), .describe(), .groupby, print, 
+
+- Made 2 basic plots with matplotlib
+
+        .plot(kind='bar'), plt.scatter
+
+- Wrote markdown in Jupyter Notebooks explaining process in between all lines of code
