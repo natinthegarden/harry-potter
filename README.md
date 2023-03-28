@@ -29,14 +29,21 @@ This was a fun student project to get familiar with data cleaning and analysis t
 
 - Pandas **read_csv** function to read in the CSV file
 
-- **Cleaned data** using built-in pandas and numpy functions to remove 0’s and null values, split an existing date column into two columns (for month and year), removed unwanted columns(Last Updated, story links, language, and original mm-yr columns), removed unwanted categories from columns (languages other than english), changed Month Published column from listing months as numbers to listing months as names, and saved all changes to a new clean data csv.
+- **Cleaned data** using built-in pandas and numpy functions to: 
+   - remove 0’s and null values
+   - split an existing date column into two columns (for month and year)
+   - removed unwanted columns(Last Updated, story links, language, and original mm-yr columns)
+   - removed unwanted categories from columns (languages other than english)
+   - changed Month Published column from listing months as numbers to listing months as words
+   - made a new column to sort list items alphabetically to remove issues of different orderings counting as different values (pairing sorted)
+   - saved all changes to a new clean data csv.
 
 - **Pandas functions** used in both **explore_harry** and **analyze_harry** jupyter notebooks
    
-     .head(), .columns, .shape, .info(), .isnull().sum().sort_values(ascending=False), .unique(), .value_counts(), .describe(), .groupby, print, int(), .iloc, .median
+     .head(), .columns(), .shape(), .info(), .isnull(), .sum(), .sort_values(), .unique(), .value_counts(), .describe(), .groupby(), print(), int(), .iloc, .median, split(), .join(), lambda
 
 - Made **basic plots with matplotlib**. A scatter plot, bar graph, and pie chart.
 
    .plot(kind='bar'), plt.scatter, ax.pie
 
-- Wrote **markdown in Jupyter Notebooks** explaining process in between all lines of code
+- Wrote **markdown in Jupyter Notebooks** explaining process and findings in between all lines of code
