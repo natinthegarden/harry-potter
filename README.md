@@ -11,11 +11,20 @@ I **explore** this data in a jupyter notebook with Pandas, and then **clean** th
 
 ---
 
+<h3>Instructions</h3>
+
+
+- Fork the repo to your gihub account
+- Clone the fork of the repo to your computer
+- Create a virtual environment and activate it
+- Install the **requirements.txt** to get specific *package install requirements* to pip install pandas, numpy and specific Python version. 
+- download the dataset from Kaggle to your computer and then place it into your Harry Potter code repo (link:* https://www.kaggle.com/datasets/nehatiwari03/harry-potter-fanfiction-data?resource=download)
+
+---
+
 <h3>Summary</h3>
 
 This was a fun student project to get familiar with data cleaning and analysis tools with Python.
-
-- Install the **requirements.txt** to get specific *package install requirements* to pip install pandas, numpy and specific Python version. You'll also need to download the dataset to your computer to start.
 
 - The **explore_harry.ipynb** can be opened and read to see where I *explored my raw data*. I made choices in this exploration about what cleaning functions would be needed.
 
