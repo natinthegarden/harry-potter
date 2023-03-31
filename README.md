@@ -34,8 +34,8 @@ This was a fun student project to get familiar with data cleaning and analysis t
    - split an existing date column into two columns (for month and year)
    - removed unwanted columns(Last Updated, story links, language, and original mm-yr columns)
    - removed unwanted categories from columns (languages other than english)
-   - changed Month Published column from listing months as numbers to listing months as words
-   - made a new column to sort list items alphabetically to remove issues of different orderings counting as different values (pairing sorted)
+   - changed Month Published column from listing months as numbers to listing months as words (12-> december)
+   - made a new column to sort list items alphabetically to remove issues of different orderings counting as different values ('pairing sorted' removed issue of 'ron,harry' and 'harry,ron' counting as different)
    - saved all changes to a new clean data csv.
 
 - **Pandas functions** used in both **explore_harry** and **analyze_harry** jupyter notebooks
